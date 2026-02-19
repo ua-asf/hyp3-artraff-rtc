@@ -14,8 +14,12 @@ def main() -> None:
     parser.add_argument('--bucket', help='AWS S3 bucket HyP3 for upload the final product(s)')
     parser.add_argument('--bucket-prefix', default='', help='Add a bucket prefix to product(s)')
 
-    # TODO: Your arguments here
-    parser.add_argument('--greeting', default='Hello world!', help='Write this greeting to a product file')
+    # RTC arguments
+    parser.add_argument('patform', help='Platform to create RTC for')
+    parser.add_argument('granule', help='Data granule to create an RTC for.')
+    parser.add_argument('--dem', default=None, help='Path to the DEM to use for processing')
+    parser.add_argument('--resolution', type=float, default=3.0, help='Resolution of the output RTC (m)')
+    parser.add_argument('--work-dir', default='/tmp/work', help='Working directory for processing')
 
     args = parser.parse_args()
 
