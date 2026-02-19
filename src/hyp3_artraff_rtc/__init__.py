@@ -1,4 +1,4 @@
-"""Hyp3 plugin for arctic trafficability RTC of commercial SAR"""
+"""Hyp3 plugin for arctic trafficability RTC of commercial SAR."""
 
 from importlib.metadata import version
 
