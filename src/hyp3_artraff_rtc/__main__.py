@@ -15,6 +15,7 @@ def main() -> None:
     parser.add_argument('--bucket-prefix', default='', help='Add a bucket prefix to product(s)')
 
     # TODO: Your arguments here
+    parser.add_argument('granule', help='granule name')
     parser.add_argument('--greeting', default='Hello world!', help='Write this greeting to a product file')
     parser.add_argument('--demtype', default='Geodata 3m', help='dem type')
 
