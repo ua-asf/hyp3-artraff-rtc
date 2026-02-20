@@ -16,6 +16,7 @@ def main() -> None:
 
     # TODO: Your arguments here
     parser.add_argument('--greeting', default='Hello world!', help='Write this greeting to a product file')
+    parser.add_argument('--demtype', default='Geodata 3m', help='dem type')
 
     args = parser.parse_args()
 
