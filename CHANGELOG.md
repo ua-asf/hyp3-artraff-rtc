@@ -9,4 +9,10 @@ and uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.1.0]
 
 ### Added
+- docker image that does RTC processing
+
+
+## [0.0.0]
+
+### Added
 - hyp3-artraff-rtc plugin created with the [HyP3 Cookiecutter](https://github.com/ASFHyP3/hyp3-cookiecutter)
