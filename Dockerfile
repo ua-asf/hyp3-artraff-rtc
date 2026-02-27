@@ -1,7 +1,9 @@
-FROM condaforge/mambaforge:latest
+FROM ghcr.io/ua-asf/arctraffic_pfa:v0.7.0
 
-# For opencontainers label definitions, see:
-#    https://github.com/opencontainers/image-spec/blob/master/annotations.md
+# Commenting following because above "FROM" is based on exactly what's below.
+
+## For opencontainers label definitions, see:
+##    https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.title="HyP3 artraff-rtc "
 LABEL org.opencontainers.image.description="Hyp3 plugin for arctic trafficability RTC of commercial SAR"
 LABEL org.opencontainers.image.vendor="Alaska Satellite Facility"
@@ -15,34 +17,34 @@ LABEL org.opencontainers.image.documentation="https://hyp3-docs.asf.alaska.edu"
 # LABEL org.opencontainers.image.created=""
 # LABEL org.opencontainers.image.version=""
 # LABEL org.opencontainers.image.revision=""
+#
+#ARG DEBIAN_FRONTEND=noninteractive
+#ENV PYTHONDONTWRITEBYTECODE=true
+#
+#RUN apt-get update && apt-get install -y --no-install-recommends unzip vim && \
+#    apt-get clean && rm -rf /var/lib/apt/lists/*
+#
+#ARG CONDA_UID=1000
+#ARG CONDA_GID=1000
+#
+#RUN groupadd -g "${CONDA_GID}" --system conda && \
+#    useradd -l -u "${CONDA_UID}" -g "${CONDA_GID}" --system -d /home/conda -m  -s /bin/bash conda && \
+#    chown -R conda:conda /opt && \
+#    echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/conda/.profile && \
+#    echo "conda activate base" >> /home/conda/.profile
+#
+#
+#USER ${CONDA_UID}
+#SHELL ["/bin/bash", "-l", "-c"]
+#WORKDIR /home/conda/
+#
+#COPY --chown=${CONDA_UID}:${CONDA_GID} . /hyp3-artraff-rtc/
+#
+#RUN mamba env create -f /hyp3-artraff-rtc/environment.yml && \
+#    conda clean -afy && \
+#    conda activate hyp3-artraff-rtc && \
+#    sed - base/conda activate hyp3-artraffi 's/conda activate-rtc/g' /home/conda/.profile && \
+#    python -m pip install --no-cache-dir /hyp3-artraff-rtc
 
-ARG DEBIAN_FRONTEND=noninteractive
-ENV PYTHONDONTWRITEBYTECODE=true
-
-RUN apt-get update && apt-get install -y --no-install-recommends unzip vim && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-ARG CONDA_UID=1000
-ARG CONDA_GID=1000
-
-RUN groupadd -g "${CONDA_GID}" --system conda && \
-    useradd -l -u "${CONDA_UID}" -g "${CONDA_GID}" --system -d /home/conda -m  -s /bin/bash conda && \
-    chown -R conda:conda /opt && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/conda/.profile && \
-    echo "conda activate base" >> /home/conda/.profile
-
-
-USER ${CONDA_UID}
-SHELL ["/bin/bash", "-l", "-c"]
-WORKDIR /home/conda/
-
-COPY --chown=${CONDA_UID}:${CONDA_GID} . /hyp3-artraff-rtc/
-
-RUN mamba env create -f /hyp3-artraff-rtc/environment.yml && \
-    conda clean -afy && \
-    conda activate hyp3-artraff-rtc && \
-    sed -i 's/conda activate base/conda activate hyp3-artraff-rtc/g' /home/conda/.profile && \
-    python -m pip install --no-cache-dir /hyp3-artraff-rtc
-
-ENTRYPOINT ["/hyp3-artraff-rtc/src/hyp3_artraff_rtc/etc/entrypoint.sh"]
-CMD ["-h"]
+#ENTRYPOINT ["/hyp3-artraff-rtc/src/hyp3_artraff_rtc/etc/entrypoint.sh"]
+#CMD ["-h"]
