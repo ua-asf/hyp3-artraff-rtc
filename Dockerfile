@@ -1,4 +1,4 @@
-FROM ghcr.io/ua-asf/arctraffic_pfa:v0.7.0
+FROM ghcr.io/ua-asf/arctraffic_pfa:0.7.3
 
 # Commenting following because above "FROM" is based on exactly what's below.
 
